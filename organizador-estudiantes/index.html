@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Organizador Estudiantil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <header class="top-bar">
+    <h1 id="saludo">¡Hola, Estudiante!</h1>
+    <div class="top-controls">
+      <input type="text" id="buscador" placeholder="Buscar tarea…"/>
+      <select id="filtroCateg">
+        <option value="">Todas las categorías</option>
+        <option>Estudio</option>
+        <option>Deporte</option>
+        <option>Trabajo</option>
+        <option>Ocio</option>
+      </select>
+      <button id="toggleModo" aria-label="Modo oscuro/claro">🌓</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Columna izquierda -->
+    <section class="col izq">
+      <div class="perfil">
+        <img id="avatar" src="img/default-avatar.svg" alt="Avatar"/>
+        <input type="text" id="nombreUsuario" placeholder="Tu nombre"/>
+      </div>
+
+      <div class="calendario-wrapper">
+        <div class="cal-header">
+          <button id="prevMes">‹</button>
+          <h3 id="mesTitulo"></h3>
+          <button id="nextMes">›</button>
+        </div>
+        <div id="diasCal" class="grid-cal"></div>
+      </div>
+
+      <div class="notas-rapidas">
+        <h3>Notas rápidas</h3>
+        <textarea id="notas" placeholder="Pega aquí tus recordatorios…"></textarea>
+      </div>
+    </section>
+
+    <!-- Columna central -->
+    <section class="col mid">
+      <div class="agenda">
+        <h2>Agenda del día <span id="fechaHoy"></span></h2>
+        <form id="formTarea" class="form-tarea">
+          <input type="text" id="titulo" placeholder="Título" required/>
+          <input type="time" id="horaInicio" required/>
+          <input type="time" id="horaFin" required/>
+          <select id="categoria">
+            <option>Estudio</option>
+            <option>Deporte</option>
+            <option>Trabajo</option>
+            <option>Ocio</option>
+          </select>
+          <select id="prioridad">
+            <option>Alta</option>
+            <option>Media</option>
+            <option>Baja</option>
+          </select>
+          <button type="submit">+ Agregar</button>
+        </form>
+        <ul id="listaTareas"></ul>
+      </div>
+
+      <div class="progreso">
+        <h3>Progreso del día</h3>
+        <div class="barra"><div id="barraProgreso"></div></div>
+        <p id="textoProgreso">0 de 0 tareas</p>
+      </div>
+    </section>
+
+    <!-- Columna derecha -->
+    <section class="col der">
+      <div class="pomodoro">
+        <h3>Pomodoro</h3>
+        <div id="reloj">25:00</div>
+        <div class="pomodoro-controls">
+          <button id="btnIniciar">Iniciar</button>
+          <button id="btnPausar">Pausar</button>
+          <button id="btnReiniciar">Reiniciar</button>
+        </div>
+        <label>
+          Estudio: <input id="minEstudio" type="number" value="25" min="1"/> min
+        </label>
+        <label>
+          Descanso: <input id="minDescanso" type="number" value="5" min="1"/> min
+        </label>
+      </div>
+
+      <div class="cronometro">
+        <h3>Cronómetro</h3>
+        <div id="cronometro">00:00:00</div>
+        <button id="btnCronoIniciar">Iniciar</button>
+        <button id="btnCronoReiniciar">Reiniciar</button>
+      </div>
+
+      <button id="btnExportar">Exportar tareas (.txt)</button>
+    </section>
+  </main>
+
+  <audio id="audioFin" src="sounds/bell.mp3" preload="auto"></audio>
+  <script src="js/script.js"></script>
+</body>
+</html>
